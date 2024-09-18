@@ -6,7 +6,7 @@ import { WelcomeMessage } from "@/components/WelcomeMessage";
 
 export function Header() {
   return (
-    <header className="bg-gradient-to-b from-zinc-800 to-zinc-600 px-4 py-8 lg:px-14 lg:pb-36">
+    <header className="bg-gradient-to-b from-zinc-800 to-zinc-600 px-4 pb-28 pt-8 lg:px-14 lg:pb-36">
       <div className="mx-auto max-w-screen-2xl">
         <div className="mb-14 flex w-full items-center justify-between">
           <div className="flex items-center lg:gap-x-16">
