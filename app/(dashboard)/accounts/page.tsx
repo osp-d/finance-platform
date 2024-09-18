@@ -1,29 +1,38 @@
 "use client";
 
+import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
+import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
+import { useBulkDeleteAccounts } from "@/features/accounts/api/useBulkDelete";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
 import { DataTable } from "@/app/(dashboard)/accounts/DataTable";
-import { columns, Payment } from "@/app/(dashboard)/accounts/columns";
-import { Plus } from "lucide-react";
-
-const data: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "123ex41g",
-    amount: 110,
-    status: "success",
-    email: "x@example.com",
-  },
-];
+import { columns } from "@/app/(dashboard)/accounts/columns";
+import { Loader2, Plus } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AccountsPage() {
   const newAccount = useNewAccount();
+  const accountsQuery = useGetAccounts();
+  const account = accountsQuery.data || [];
+  const deleteAccounts = useBulkDeleteAccounts();
+
+  const isDisabled = accountsQuery.isLoading || deleteAccounts.isPending;
+
+  if (accountsQuery.isLoading) {
+    return (
+      <div className="mx-auto -mt-24 w-full max-w-screen-2xl pb-10">
+        <Card className="border-none drop-shadow-sm">
+          <CardHeader>
+            <Skeleton className="h-8 w-48" />
+          </CardHeader>
+          <CardContent className="flex h-[500px] w-full items-center justify-center">
+            <Loader2 className="size-6 animate-spin text-slate-300" />
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto -mt-24 w-full max-w-screen-2xl pb-10">
@@ -38,11 +47,14 @@ export default function AccountsPage() {
 
         <CardContent>
           <DataTable
-            disabled={false}
+            disabled={isDisabled}
             columns={columns}
-            data={data}
-            filterKey={"email"}
-            onDelete={() => {}}
+            data={account}
+            filterKey={"name"}
+            onDelete={(row) => {
+              const ids = row.map((r) => r.original.id);
+              deleteAccounts.mutate({ ids });
+            }}
           />
         </CardContent>
       </Card>
