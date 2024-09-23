@@ -3,11 +3,14 @@ import { handle } from "hono/vercel";
 // import { z } from "zod";
 // import { zValidator } from "@hono/zod-validator";
 import accounts from "@/app/api/[[...route]]/accounts";
+import categories from "@/app/api/[[...route]]/categories";
 
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
-const routes = app.route("/accounts", accounts);
+const routes = app
+  .route("/accounts", accounts)
+  .route("/categories", categories);
 
 export const GET = handle(app);
 export const POST = handle(app);
