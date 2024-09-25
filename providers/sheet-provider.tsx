@@ -6,6 +6,7 @@ import { EditAccountSheet } from "@/features/accounts/components/EditAccount";
 
 import { NewCategorySheet } from "@/features/categories/components/NewCategorySheet";
 import { EditCategorySheet } from "@/features/categories/components/EditCategory";
+import { NewTransactionSheet } from "@/features/transactions/components/NewTransactionSheet";
 
 export function SheetProvider() {
   const isMounted = useMountedState();
@@ -21,6 +22,8 @@ export function SheetProvider() {
 
       <NewCategorySheet />
       <EditCategorySheet />
+
+      <NewTransactionSheet />
     </>
   );
 }
