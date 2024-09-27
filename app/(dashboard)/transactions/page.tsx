@@ -6,8 +6,8 @@ import { useBulkDeleteTransactions } from "@/features/transactions/api/useBulkDe
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { DataTable } from "@/app/(dashboard)/accounts/DataTable";
-import { columns } from "@/app/(dashboard)/accounts/columns";
+import { DataTable } from "@/app/(dashboard)/transactions/DataTable";
+import { columns } from "@/app/(dashboard)/transactions/columns";
 import { Loader2, Plus } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -53,7 +53,7 @@ export default function TransactionsPage() {
             disabled={isDisabled}
             columns={columns}
             data={transaction}
-            filterKey={"name"}
+            filterKey="payee"
             onDelete={(row) => {
               const ids = row.map((r) => r.original.id);
               deleteTransactions.mutate({ ids });

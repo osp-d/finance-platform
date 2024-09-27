@@ -1,7 +1,7 @@
 "use client";
 
-import { useOpenAccount } from "@/features/accounts/hooks/useOpenAccount";
-import { useDeleteAccount } from "@/features/accounts/api/useDeleteAccount";
+import { useOpenTransaction } from "@/features/transactions/hooks/useOpenTransaction";
+import { useDeleteTransaction } from "@/features/transactions/api/useDeleteTransaction";
 import { useConfirm } from "@/hooks/useConfirm";
 
 import {
@@ -18,9 +18,9 @@ type Props = {
 };
 
 export function Actions({ id }: Props) {
-  const { onOpen } = useOpenAccount();
+  const { onOpen } = useOpenTransaction();
 
-  const deleteMutation = useDeleteAccount(id);
+  const deleteMutation = useDeleteTransaction(id);
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this transaction",

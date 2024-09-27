@@ -39,13 +39,14 @@ const app = new Hono()
       const startDate = from
         ? parse(from, "yyyy-MM-dd", new Date())
         : defaultFrom;
-      const endDate = to ? parse(to, "yyyy-MM-dd", new Date()) : defaultFrom;
+      const endDate = to ? parse(to, "yyyy-MM-dd", new Date()) : defaultTo;
 
       const data = await db
         .select({
           id: transactions.id,
           date: transactions.date,
           amount: transactions.amount,
+          payee: transactions.payee,
           notes: transactions.notes,
           accountId: transactions.accountId,
           account: accounts.name,
@@ -94,6 +95,7 @@ const app = new Hono()
           id: transactions.id,
           date: transactions.date,
           amount: transactions.amount,
+          payee: transactions.payee,
           notes: transactions.notes,
           accountId: transactions.accountId,
           categoryId: transactions.categoryId,
@@ -191,7 +193,10 @@ const app = new Hono()
         .with(transactionsToDelete)
         .delete(transactions)
         .where(
-          inArray(transactions.id, sql`select id from ${transactionsToDelete}`),
+          inArray(
+            transactions.id,
+            sql`(select id from ${transactionsToDelete})`,
+          ),
         )
         .returning({
           id: transactions.id,
@@ -238,7 +243,10 @@ const app = new Hono()
         .update(transactions)
         .set(values)
         .where(
-          inArray(transactions.id, sql`select id from ${transactionsToUpdate}`),
+          inArray(
+            transactions.id,
+            sql`(select id from ${transactionsToUpdate})`,
+          ),
         )
         .returning();
 
@@ -284,7 +292,10 @@ const app = new Hono()
         .with(transactionsToDelete)
         .delete(transactions)
         .where(
-          inArray(transactions.id, sql`select id from ${transactionsToDelete}`),
+          inArray(
+            transactions.id,
+            sql`(select id from ${transactionsToDelete})`,
+          ),
         )
         .returning({
           id: transactions.id,

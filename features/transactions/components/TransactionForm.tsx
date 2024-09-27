@@ -49,7 +49,7 @@ export const TransactionForm = ({
   id,
   defaultValues,
   onSubmit,
-  // onDelete,
+  onDelete,
   disabled,
   categoryOptions,
   onCreateCategory,
@@ -72,7 +72,7 @@ export const TransactionForm = ({
   };
 
   const handleDelete = () => {
-    // onDelete?.();
+    onDelete?.();
   };
 
   return (
