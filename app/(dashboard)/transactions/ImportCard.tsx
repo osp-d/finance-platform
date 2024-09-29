@@ -17,7 +17,7 @@ interface SelectedColumnsState {
 type Props = {
   data: string[][];
   onCancel: () => void;
-  onSubmit: (data: unknown) => void;
+  onSubmit: (data: any) => void;
 };
 
 export function ImportCard({ data, onCancel, onSubmit }: Props) {
@@ -66,7 +66,7 @@ export function ImportCard({ data, onCancel, onSubmit }: Props) {
         .map((row) => {
           const transformedRow = row.map((cell, index) => {
             const columnIndex = getColumnIndex(`column_${index}`);
-            return selectedColumns[`columns_${columnIndex}`] ? cell : null;
+            return selectedColumns[`column_${columnIndex}`] ? cell : null;
           });
 
           return transformedRow.every((item) => item === null)
