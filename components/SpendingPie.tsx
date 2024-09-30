@@ -7,28 +7,21 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  AreaChart,
-  BarChart3,
-  FileSearch,
-  LineChart,
-  Loader2,
-} from "lucide-react";
-import { AreaVariant } from "@/components/AreaVariant";
-import { BarVariant } from "@/components/BarVariant";
-import { LineVariant } from "@/components/LineVariant";
+import { FileSearch, Loader2, PieChart, Radar, Target } from "lucide-react";
+import { PieVariant } from "@/components/PieVariant";
+import { RadarVariant } from "@/components/RadarVariant";
+import { RadialVariant } from "@/components/RadialVariant";
 import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = {
   data?: {
-    date: string;
-    income: number;
-    expenses: number;
+    name: string;
+    value: number;
   };
 };
 
-export function Chart({ data = [] }: Props) {
-  const [chartType, setChartType] = useState("area");
+export function SpendingPie({ data = [] }: Props) {
+  const [chartType, setChartType] = useState("pie");
 
   const onTypeChange = (type: string) => {
     setChartType(type);
@@ -37,28 +30,28 @@ export function Chart({ data = [] }: Props) {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex justify-between space-y-2 lg:flex-row lg:items-center lg:space-y-0">
-        <CardTitle className="line-clamp-1 text-xl">Transactions</CardTitle>
+        <CardTitle className="line-clamp-1 text-xl">Categories</CardTitle>
         <Select defaultValue={chartType} onValueChange={onTypeChange}>
           <SelectTrigger className="h-9 rounded-md px-3 lg:w-auto">
             <SelectValue placeholder="Chart type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="area">
+            <SelectItem value="pie">
               <div className="flex items-center">
-                <AreaChart className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Area Chart</p>
+                <PieChart className="mr-2 size-4 shrink-0" />
+                <p className="line-clamp-1">Pie Chart</p>
               </div>
             </SelectItem>
-            <SelectItem value="line">
+            <SelectItem value="radar">
               <div className="flex items-center">
-                <LineChart className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Line Chart</p>
+                <Radar className="mr-2 size-4 shrink-0" />
+                <p className="line-clamp-1">Radar Chart</p>
               </div>
             </SelectItem>
-            <SelectItem value="bar">
+            <SelectItem value="radial">
               <div className="flex items-center">
-                <BarChart3 className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Bar Chart</p>
+                <Target className="mr-2 size-4 shrink-0" />
+                <p className="line-clamp-1">Radial Chart</p>
               </div>
             </SelectItem>
           </SelectContent>
@@ -74,9 +67,9 @@ export function Chart({ data = [] }: Props) {
           </div>
         ) : (
           <>
-            {chartType === "area" && <AreaVariant data={data} />}
-            {chartType === "bar" && <BarVariant data={data} />}
-            {chartType === "line" && <LineVariant data={data} />}
+            {chartType === "pie" && <PieVariant data={data} />}
+            {chartType === "radar" && <RadarVariant data={data} />}
+            {chartType === "radial" && <RadialVariant data={data} />}
           </>
         )}
       </CardContent>
@@ -84,7 +77,7 @@ export function Chart({ data = [] }: Props) {
   );
 }
 
-export const ChartLoading = () => {
+export const SpendingPieLoading = () => {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex justify-between space-y-2 lg:flex-row lg:items-center lg:space-y-0">
