@@ -3,6 +3,7 @@ import { NavBar } from "@/components/NavBar";
 import { UserButton, ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
 import { Loader2 } from "lucide-react";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
+import { Filters } from "@/components/Filters";
 
 export function Header() {
   return (
@@ -24,6 +25,7 @@ export function Header() {
         </div>
 
         <WelcomeMessage />
+        <Filters />
       </div>
     </header>
   );
