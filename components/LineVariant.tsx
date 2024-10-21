@@ -14,7 +14,7 @@ type Props = {
     date: string;
     income: number;
     expenses: number;
-  };
+  }[];
 };
 
 export function LineVariant({ data }: Props) {

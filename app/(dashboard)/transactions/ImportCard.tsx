@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ImportTable } from "./ImportTable";
 import { convertAmountToMilliunits } from "@/lib/utils";
 import { format, parse } from "date-fns";
+import { transactions as transactionSchema } from "@/db/schema";
 
 const dateFormat = "yyyy-MM-dd HH:mm:ss";
 const outputFormat = "yyyy-MM-dd";
@@ -17,7 +18,7 @@ interface SelectedColumnsState {
 type Props = {
   data: string[][];
   onCancel: () => void;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: (typeof transactionSchema.$inferInsert)[]) => void;
 };
 
 export function ImportCard({ data, onCancel, onSubmit }: Props) {

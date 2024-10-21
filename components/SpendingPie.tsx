@@ -17,7 +17,7 @@ type Props = {
   data?: {
     name: string;
     value: number;
-  };
+  }[];
 };
 
 export function SpendingPie({ data = [] }: Props) {

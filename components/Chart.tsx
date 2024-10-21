@@ -24,7 +24,7 @@ type Props = {
     date: string;
     income: number;
     expenses: number;
-  };
+  }[];
 };
 
 export function Chart({ data = [] }: Props) {
