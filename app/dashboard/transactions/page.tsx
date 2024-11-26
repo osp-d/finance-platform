@@ -11,9 +11,9 @@ import { transactions as transactionSchema } from "@/db/schema";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { columns } from "@/app/(dashboard)/transactions/columns";
+import { columns } from "@/app/dashboard/transactions/columns";
 import { Loader2, Plus } from "lucide-react";
-import { DataTable } from "@/app/(dashboard)/transactions/DataTable";
+import { DataTable } from "@/app/dashboard/transactions/DataTable";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UploadButton } from "./UploadButton";
 import { ImportCard } from "./ImportCard";

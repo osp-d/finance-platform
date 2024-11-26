@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { InferResponseType } from "hono";
 import { client } from "@/lib/hono";
-import { Actions } from "@/app/(dashboard)/categories/actions";
+import { Actions } from "@/app/dashboard/accounts/actions";
 
 export type ResponseType = InferResponseType<
-  typeof client.api.categories.$get,
+  typeof client.api.accounts.$get,
   200
 >["data"][0];
 

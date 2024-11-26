@@ -7,11 +7,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { InferResponseType } from "hono";
 import { client } from "@/lib/hono";
-import { Actions } from "@/app/(dashboard)/transactions/actions";
+import { Actions } from "@/app/dashboard/transactions/actions";
 import { format } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
-import { AccountColumn } from "@/app/(dashboard)/transactions/AccountColumn";
-import { CategoryColumn } from "@/app/(dashboard)/transactions/CategoryColumn";
+import { AccountColumn } from "@/app/dashboard/transactions/AccountColumn";
+import { CategoryColumn } from "@/app/dashboard/transactions/CategoryColumn";
 
 export type ResponseType = InferResponseType<
   typeof client.api.transactions.$get,
