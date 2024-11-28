@@ -21,7 +21,7 @@ export default function SignUpPage() {
           </ClerkLoading>
         </div>
       </div>
-      <div className="hidden h-full items-center justify-center bg-zinc-600 lg:flex">
+      <div className="hidden h-full items-center justify-center bg-zinc-800 lg:flex">
         <Image src={"/logo.svg"} alt="logo" height={180} width={180} />
       </div>
     </div>
