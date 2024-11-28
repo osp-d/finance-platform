@@ -5,6 +5,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { useAuth } from "@clerk/nextjs";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -32,7 +33,15 @@ type Props = {
 };
 
 export function QueryProvider({ children }: Props) {
+  const { isSignedIn } = useAuth();
   const queryClient = getQueryClient();
+
+  queryClient.setDefaultOptions({
+    queries: {
+      staleTime: 60 * 1000,
+      enabled: isSignedIn,
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

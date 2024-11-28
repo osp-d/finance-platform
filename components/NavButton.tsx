@@ -14,7 +14,7 @@ export function NavButton({ href, label, isActive }: Props) {
       asChild
       size="sm"
       className={cn(
-        "w-full justify-between font-normal text-white shadow-none outline-none transition hover:bg-white/20 hover:text-white focus:bg-white/30 focus-visible:ring-transparent focus-visible:ring-offset-0 lg:w-auto",
+        "w-full justify-between text-sm font-normal text-white shadow-none outline-none transition hover:bg-white/20 hover:text-white focus:bg-white/30 focus-visible:ring-transparent focus-visible:ring-offset-0 lg:w-auto",
         isActive ? "bg-white/10 text-white" : "bg-transparent",
       )}
     >
