@@ -86,13 +86,13 @@ export default function Contacts() {
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-950">
                 <MailIcon fill="white" className="h-5 w-5" />
               </div>
-              <Link className="text-base" href="#">
+              <Link className="text-base font-medium" href="#">
                 financeplatforminflux@gmail.com
               </Link>
             </div>
             <div className="flex items-center gap-4">
               <FaTelegram className="h-8 w-8" />
-              <Link className="text-base" href="#">
+              <Link className="text-base font-medium" href="#">
                 t.me/fncplatform
               </Link>
             </div>
@@ -166,7 +166,7 @@ export default function Contacts() {
                 )}
               />
 
-              <Button type="submit" className="font-bold">
+              <Button type="submit" className="font-semibold">
                 Submit
               </Button>
             </form>
