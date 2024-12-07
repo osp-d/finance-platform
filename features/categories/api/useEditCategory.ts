@@ -2,6 +2,7 @@ import { InferRequestType, InferResponseType } from "hono";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type ResponseType = InferResponseType<
   (typeof client.api.categories)[":id"]["$patch"]
@@ -11,6 +12,8 @@ type RequestType = InferRequestType<
 >["json"];
 
 export function useEditCategory(id?: string) {
+  const t = useTranslations("features.categories.api.edit");
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -22,14 +25,14 @@ export function useEditCategory(id?: string) {
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Category edited");
+      toast.success(t("success"));
       queryClient.invalidateQueries({ queryKey: ["category", { id }] });
       queryClient.invalidateQueries({ queryKey: ["categories"] });
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
       queryClient.invalidateQueries({ queryKey: ["summary"] });
     },
     onError: () => {
-      toast.error("Failed to edit category");
+      toast.error(t("fail"));
     },
   });
 

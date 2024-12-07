@@ -11,12 +11,15 @@ import {
   SheetDescription,
   SheetHeader,
 } from "@/components/ui/sheet";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertAccountSchema.pick({ name: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function NewAccountSheet() {
+  const t = useTranslations("features.accounts.components.new");
+
   const { isOpen, onClose } = useNewAccount();
 
   const mutation = useCreateAccount();
@@ -33,10 +36,8 @@ export function NewAccountSheet() {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-4 bg-white">
         <SheetHeader>
-          <SheetTitle>New Account</SheetTitle>
-          <SheetDescription>
-            Create a new account to track your transactions
-          </SheetDescription>
+          <SheetTitle>{t("title")}</SheetTitle>
+          <SheetDescription>{t("description")}</SheetDescription>
         </SheetHeader>
         <AccountForm
           onSubmit={onSubmit}

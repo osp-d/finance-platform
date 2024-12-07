@@ -16,7 +16,18 @@ export function Header() {
           </div>
 
           <ClerkLoaded>
-            <UserButton afterSwitchSessionUrl="/" />
+            <UserButton
+              afterSwitchSessionUrl="/"
+              showName
+              appearance={{
+                elements: {
+                  userButtonBox: {
+                    gap: "12px",
+                    color: "white",
+                  },
+                },
+              }}
+            />
           </ClerkLoaded>
 
           <ClerkLoading>

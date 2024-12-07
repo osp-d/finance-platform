@@ -1,0 +1,588 @@
+{
+  "navBar": {
+    "1": {
+      "href": "/dashboard",
+      "label": "Overview"
+    },
+    "2": {
+      "href": "/dashboard/transactions",
+      "label": "Transactions"
+    },
+    "3": {
+      "href": "/dashboard/accounts",
+      "label": "Accounts"
+    },
+    "4": {
+      "href": "/dashboard/categories",
+      "label": "Categories"
+    },
+    "5": {
+      "href": "/dashboard/settings",
+      "label": "Settings"
+    }
+  },
+  "homeNavBar": {
+    "brand": "Finance",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contacts": "Contacts",
+    "signIn": "Sign in",
+    "signUp": "Sign up"
+  },
+  "homeFooter": {
+    "product": {
+      "title": "Product",
+      "about": "About",
+      "features": "Features",
+      "pricing": "Pricing"
+    },
+    "community": {
+      "title": "Community",
+      "contactUs": "Contact Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "rights": "All rights reserved 2024 © Finance Inc."
+  },
+  "contacts": {
+    "header": {
+      "title": "Don't hesitate to contact us",
+      "subtitle": "Everyone is welcome: individual clients, companies, possible partners, and investors"
+    },
+    "contactInfo": {
+      "email": "financeplatforminflux@gmail.com",
+      "telegram": "t.me/fncplatform"
+    },
+    "form": {
+      "labels": {
+        "name": "Name",
+        "company": "Company",
+        "contacts": "Contacts",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Your Name",
+        "company": "Company Name",
+        "contacts": "Write your email or phone",
+        "message": "Your Message"
+      },
+      "button": "Submit",
+      "errors": {
+        "name": {
+          "min": "Name must be at least 2 characters",
+          "max": "Name should not exceed 30 characters"
+        },
+        "company": {
+          "min": "Company must be at least 2 characters",
+          "max": "Company should not exceed 30 characters"
+        },
+        "contacts": "Contacts must contain email or mobile number",
+        "message": "Message should not exceed 200 characters"
+      }
+    }
+  },
+  "pricing": {
+    "header": {
+      "title": "Choose Your Plan",
+      "subtitle": "Select the perfect plan for your needs. Upgrade or downgrade at any time."
+    },
+    "tiers": {
+      "basic": {
+        "name": "Basic",
+        "price": "$0.00",
+        "description": "Essential features for individuals",
+        "features": {
+          "1": "1 account",
+          "2": "2 devices",
+          "3": "1 year of history",
+          "4": "Debt tracking",
+          "5": "Basic analytics"
+        },
+        "cta": "Get Started"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$4.99",
+        "description": "Advanced features for demanding users",
+        "features": {
+          "1": "5 accounts",
+          "2": "5 devices",
+          "3": "8 years of history",
+          "4": "Debt tracking",
+          "5": "Advanced analytics",
+          "6": "Email support"
+        },
+        "cta": "Upgrade to Pro"
+      }
+    }
+  },
+  "privacyPolicy": {
+    "header": {
+      "title": "Privacy Policy"
+    },
+    "sections": {
+      "section1": {
+        "content1": "Welcome to",
+        "content2": "Finance Platform!",
+        "content3": "Your privacy is important to us. This Privacy Policy explains how we collect, use, share, and protect your personal information. By using our service, you agree to the practices outlined in this policy."
+      },
+      "section2": {
+        "title": "1. Information We Collect",
+        "note": "We collect different types of information to provide and improve our services. This includes:",
+        "subsections": {
+          "subsection1": {
+            "title": "1.1. Information You Provide Directly",
+            "content": {
+              "accountInformation": "Account Information: Name, email address, password, etc.",
+              "transactionData": "Transaction Data: Amounts, categories, accounts, descriptions, etc.",
+              "csvData": "CSV Data: Uploaded files containing transaction data.",
+              "contactInformation": "Contact Information: Email and other details provided through support inquiries."
+            }
+          },
+          "subsection2": {
+            "title": "1.2. Information We Collect Automatically",
+            "content": {
+              "usageData": "Usage Data: Information about interactions with the platform.",
+              "deviceInformation": "Device Information: IP address, browser type, operating system, etc.",
+              "cookiesAndTrackingTechnologies": "Cookies and Tracking Technologies: Tools to enhance the user experience."
+            }
+          },
+          "subsection3": {
+            "title": "1.3. Information from Third Parties",
+            "content": {
+              "bankingIntegration": "Banking Integration: Transaction data from linked accounts.",
+              "analyticsTools": "Analytics Tools: Aggregated usage data from platforms like Google Analytics."
+            }
+          }
+        }
+      },
+      "section3": {
+        "title": "2. How We Use Your Information",
+        "content": {
+          "use1": "To provide services such as tracking and visualizing financial data.",
+          "use2": "To personalize your experience with tailored content and suggestions.",
+          "use3": "To improve our platform based on usage patterns and feedback.",
+          "use4": "To communicate with you about updates, notifications, and support.",
+          "use5": "To ensure security and prevent fraudulent activities.",
+          "use6": "To comply with legal obligations and regulations."
+        }
+      },
+      "section4": {
+        "title": "3. How We Share Your Information",
+        "note": "We do not sell your personal information. However, we may share your data under specific circumstances:",
+        "content": {
+          "bold1": "With Service Providers: ",
+          "sharing1": "For essential services like hosting and payment processing.",
+          "bold2": "For Legal Reasons: ",
+          "sharing2": "To comply with laws, regulations, or legal processes.",
+          "bold3": "During Business Transactions: ",
+          "sharing3": "In the event of a merger, acquisition, or sale of assets.",
+          "bold4": "With Your Consent: ",
+          "sharing4": "For any other purpose not covered by this policy."
+        }
+      },
+      "section5": {
+        "title": "4. Data Security",
+        "content": "We implement industry-standard security measures, including encryption, access controls, and regular monitoring. However, no system is completely secure, and we cannot guarantee the absolute security of your data."
+      },
+      "section6": {
+        "title": "5. Your Rights and Choices",
+        "note": "You have the following rights regarding your personal information:",
+        "subsections": {
+          "subsection1": {
+            "title": "5.1. Access and Update",
+            "content": "You can access and update your personal information through your account settings."
+          },
+          "subsection2": {
+            "title": "5.2. Data Portability",
+            "content": "You can request a copy of your data in a portable format."
+          },
+          "subsection3": {
+            "title": "5.3. Deletion",
+            "content": "You can request the deletion of your account and associated data. Note that some information may be retained for legal or operational purposes."
+          },
+          "subsection4": {
+            "title": "5.4. Opt-Out",
+            "content": "You can opt-out of marketing communications by clicking the 'unsubscribe' link in our emails."
+          },
+          "subsection5": {
+            "title": "5.5. Cookies",
+            "content": "Manage your cookie preferences through your browser settings or our cookie management tool."
+          }
+        }
+      },
+      "section7": {
+        "title": "6. Data Retention",
+        "content": "We retain your data for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. When data is no longer needed, we securely delete it."
+      },
+      "section8": {
+        "title": "7. Cookies and Tracking Technologies",
+        "note": "We use cookies to:",
+        "content": {
+          "use1": "Maintain user sessions.",
+          "use2": "Analyze platform performance.",
+          "use3": "Deliver targeted advertisements.",
+          "note": "You can manage cookies through your browser settings. Note that disabling cookies may limit the functionality of the platform."
+        }
+      },
+      "section9": {
+        "title": "8. International Users",
+        "content": "Our service operates globally. By using our platform, you consent to the transfer and processing of your information in countries that may not have the same data protection laws as your country of residence."
+      }
+    }
+  },
+  "termsOfService": {
+    "header": {
+      "title": "Terms of Service"
+    },
+    "sections": {
+      "section1": {
+        "content1": "Welcome to ",
+        "content2": "Finance Platform!",
+        "content3": " By using our service, you agree to the terms and conditions outlined below. Please read these terms carefully before accessing or using our platform."
+      },
+      "section2": {
+        "title": "1. Acceptance of Terms",
+        "content": "By creating an account or using our services, you confirm that you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please discontinue use of the service immediately."
+      },
+      "section3": {
+        "title": "2. Changes to Terms",
+        "content": "We reserve the right to update or modify these terms at any time. Significant changes will be notified to users, and your continued use of the platform after modifications implies acceptance of the updated terms."
+      },
+      "section4": {
+        "title": "3. User Responsibilities",
+        "content": {
+          "responsibility1": "You are responsible for maintaining the confidentiality of your account credentials.",
+          "responsibility2": "You agree to use the service only for lawful purposes.",
+          "responsibility3": "You must not attempt to disrupt or damage the service or its infrastructure."
+        }
+      },
+      "section5": {
+        "title": "4. Prohibited Activities",
+        "note": "The following activities are strictly prohibited:",
+        "content": {
+          "prohibition1": "Using the platform for fraudulent or illegal purposes.",
+          "prohibition2": "Reverse engineering or attempting to access the service's source code.",
+          "prohibition3": "Uploading harmful or malicious content to the platform."
+        }
+      },
+      "section6": {
+        "title": "5. Intellectual Property",
+        "content": "All intellectual property rights, including trademarks, logos, and service content, are owned by Finance Platform. You may not use, reproduce, or distribute these materials without prior written consent."
+      },
+      "section7": {
+        "title": "6. Termination",
+        "content": "We reserve the right to terminate your access to the service if you violate these terms or engage in prohibited activities. Upon termination, you must cease using the platform and delete any materials obtained through it."
+      },
+      "section8": {
+        "title": "7. Disclaimer of Warranties",
+        "content": "The service is provided 'as is' and 'as available.' We disclaim all warranties, including implied warranties of merchantability and fitness for a particular purpose. We do not guarantee uninterrupted or error-free service."
+      },
+      "section9": {
+        "title": "8. Limitation of Liability",
+        "content": "Finance Platform is not liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the platform, even if we were advised of such possibilities."
+      }
+    }
+  },
+  "dashboard": {
+    "actions": {
+      "del": "Delete",
+      "edit": "Edit",
+      "accounts": {
+        "confirmTitle": "Are you sure?",
+        "confirmSubtitle": "You are about to delete this transaction"
+      },
+      "categories": {
+        "confirmTitle": "Are you sure?",
+        "confirmSubtitle": "You are about to delete this category"
+      },
+      "transactions": {
+        "confirmTitle": "Are you sure?",
+        "confirmSubtitle": "You are about to delete this transaction"
+      }
+    },
+    "dataTable": {
+      "confirmTitle": "Are you sure?",
+      "confirmSubtitle": "You are about to perform a bulk delete",
+      "result": "No results.",
+      "prev": "Previous",
+      "next": "Next",
+      "of": "of",
+      "selected": "row(s) selected.",
+      "del": "Delete"
+    },
+    "page": {
+      "accounts": "Accounts",
+      "categories": "Categories",
+      "add": "Add new",
+      "transactions": {
+        "error": "Please select an account to continue",
+        "history": "Transaction History"
+      }
+    },
+    "importCard": {
+      "import": "Import Transaction",
+      "cancel": "Cancel",
+      "continue": "Continue"
+    },
+    "uploadButton": "Import",
+    "tableHeadSelect": {
+      "skip": "Skip",
+      "options": {
+        "1": "amount",
+        "2": "date",
+        "3": "payee"
+      }
+    }
+  },
+  "features": {
+    "transactions": {
+      "api": {
+        "del": {
+          "singular": {
+            "success": "Transaction deleted",
+            "fail": "Failed to delete transaction"
+          },
+          "plural": {
+            "success": "Transactions deleted",
+            "fail": "Failed to delete transactions"
+          }
+        },
+        "create": {
+          "singular": {
+            "success": "Transaction created",
+            "fail": "Failed to create transaction"
+          },
+          "plural": {
+            "success": "Transactions created",
+            "fail": "Failed to create transactions"
+          }
+        },
+        "edit": {
+          "success": "Transaction edited",
+          "fail": "Failed to edit transaction"
+        },
+        "get": {
+          "singular": {
+            "fail": "Failed to fetch transaction"
+          },
+          "plural": {
+            "fail": "Failed to fetch transactions"
+          }
+        }
+      },
+      "components": {
+        "edit": {
+          "confirmTitle": "Are you sure?",
+          "confirmSubtitle": "You are about to delete this transaction",
+          "title": "Edit transaction",
+          "description": "Edit an existing transaction"
+        },
+        "new": {
+          "title": "New Transaction",
+          "description": "Add a new transaction"
+        },
+        "form": {
+          "account": {
+            "title": "Account",
+            "placeholder": "Select an account"
+          },
+          "category": {
+            "title": "Category",
+            "placeholder": "Select a category"
+          },
+          "payee": {
+            "title": "Payee",
+            "placeholder": "Add a payee"
+          },
+          "amount": {
+            "title": "Amount",
+            "placeholder": "0.00"
+          },
+          "notes": {
+            "title": "Notes",
+            "placeholder": "Optional notes"
+          },
+          "save": "Save changes",
+          "create": "Create transaction",
+          "del": "Delete transaction"
+        }
+      }
+    },
+    "summary": {
+      "api": {
+        "get": {
+          "fail": "Failed to fetch summary"
+        }
+      }
+    },
+    "categories": {
+      "components": {
+        "form": {
+          "del": "Delete category",
+          "create": "Create category",
+          "save": "Save changes",
+          "name": {
+            "title": "Name",
+            "placeholder": "e.g. Food, Shopping, etc."
+          }
+        },
+        "edit": {
+          "confirmTitle": "Are you sure?",
+          "confirmSubtitle": "You are about to delete this category",
+          "title": "Edit category",
+          "description": "Edit an existing category"
+        },
+        "new": {
+          "title": "New Category",
+          "description": "Create a new category to organize your transactions"
+        }
+      },
+      "api": {
+        "del": {
+          "singular": {
+            "success": "Category deleted",
+            "fail": "Failed to delete category"
+          },
+          "plural": {
+            "success": "Categories deleted",
+            "fail": "Failed to delete categories"
+          }
+        },
+        "create": {
+          "success": "Category created",
+          "fail": "Failed to create category"
+        },
+        "edit": {
+          "success": "Category edited",
+          "fail": "Failed to edit category"
+        },
+        "get": {
+          "singular": {
+            "fail": "Failed to fetch category"
+          },
+          "plural": {
+            "fail": "Failed to fetch categories"
+          }
+        }
+      }
+    },
+    "accounts": {
+      "components": {
+        "form": {
+          "del": "Delete account",
+          "create": "Create account",
+          "save": "Save changes",
+          "name": {
+            "title": "Name",
+            "placeholder": "e.g. Credit Card, Bank."
+          }
+        },
+        "edit": {
+          "confirmTitle": "Are you sure?",
+          "confirmSubtitle": "You are about to delete this account",
+          "title": "Edit account",
+          "description": "Edit an existing account"
+        },
+        "new": {
+          "title": "New Account",
+          "description": "Create a new account to track your transactions"
+        }
+      },
+      "api": {
+        "del": {
+          "singular": {
+            "success": "Account deleted",
+            "fail": "Failed to delete account"
+          },
+          "plural": {
+            "success": "Accounts deleted",
+            "fail": "Failed to delete accounts"
+          }
+        },
+        "create": {
+          "success": "Account created",
+          "fail": "Failed to create account"
+        },
+        "edit": {
+          "success": "Account edited",
+          "fail": "Failed to edit account"
+        },
+        "get": {
+          "singular": {
+            "fail": "Failed to fetch account"
+          },
+          "plural": {
+            "fail": "Failed to fetch accounts"
+          }
+        }
+      },
+      "hooks": {
+        "useSelectAccount": {
+          "title": "Select Account",
+          "description": "Please select an account to continue",
+          "confirm": "Confirm",
+          "close": "Close"
+        }
+      }
+    }
+  },
+  "components": {
+    "accountFilter": {
+      "accounts": "All accounts"
+    },
+    "amountInput": {
+      "tooltip": "Use [+] for income and [-] for expenses",
+      "isIncome": "This will count as income",
+      "isExpense": "This will count as expense"
+    },
+    "categoryTooltip": {
+      "expenses": "Expenses"
+    },
+    "chart": {
+      "title": "Transactions",
+      "area": "Area Chart",
+      "line": "Line Chart",
+      "bar": "Bar Chart",
+      "noData": "No data for this period"
+    },
+    "customTooltip": {
+      "income": "Income",
+      "expenses": "Expenses"
+    },
+    "dataCard": {
+      "period": "from last period"
+    },
+    "dataGrid": {
+      "remaining": "Remaining",
+      "income": "Income",
+      "expenses": "Expenses"
+    },
+    "dateFilter": {
+      "reset": "Reset",
+      "apply": "Apply"
+    },
+    "datePicker": {
+      "pick": "Pick a date"
+    },
+    "spendingPie": {
+      "title": "Categories",
+      "pie": "Pie Chart",
+      "radar": "Radar Chart",
+      "radial": "Radial Chart",
+      "noData": "No data for this period"
+    },
+    "welcomeMessage": {
+      "title": "Welcome back",
+      "subtitle": "This is your financial overview report"
+    }
+  },
+  "useConfirm": {
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "signIn": {
+    "title": "Welcome back",
+    "subtitle": "Log in or create account to access the dashboard"
+  }
+}

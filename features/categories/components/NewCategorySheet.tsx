@@ -11,12 +11,15 @@ import {
   SheetDescription,
   SheetHeader,
 } from "@/components/ui/sheet";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertCategorySchema.pick({ name: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function NewCategorySheet() {
+  const t = useTranslations("features.categories.components.new");
+
   const { isOpen, onClose } = useNewCategory();
 
   const mutation = useCreateCategory();
@@ -33,10 +36,8 @@ export function NewCategorySheet() {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-4 bg-white">
         <SheetHeader>
-          <SheetTitle>New Category</SheetTitle>
-          <SheetDescription>
-            Create a new category to organize your transactions
-          </SheetDescription>
+          <SheetTitle>{t("title")}</SheetTitle>
+          <SheetDescription>{t("description")}</SheetDescription>
         </SheetHeader>
         <CategoryForm
           onSubmit={onSubmit}

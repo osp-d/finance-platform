@@ -18,6 +18,7 @@ import { AreaVariant } from "@/components/AreaVariant";
 import { BarVariant } from "@/components/BarVariant";
 import { LineVariant } from "@/components/LineVariant";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslations } from "next-intl";
 
 type Props = {
   data?: {
@@ -28,6 +29,8 @@ type Props = {
 };
 
 export function Chart({ data = [] }: Props) {
+  const t = useTranslations("components.chart");
+
   const [chartType, setChartType] = useState("area");
 
   const onTypeChange = (type: string) => {
@@ -37,7 +40,7 @@ export function Chart({ data = [] }: Props) {
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex justify-between space-y-2 lg:flex-row lg:items-center lg:space-y-0">
-        <CardTitle className="line-clamp-1 text-xl">Transactions</CardTitle>
+        <CardTitle className="line-clamp-1 text-xl">{t("title")}</CardTitle>
         <Select defaultValue={chartType} onValueChange={onTypeChange}>
           <SelectTrigger className="h-9 rounded-md px-3 lg:w-auto">
             <SelectValue placeholder="Chart type" />
@@ -46,19 +49,19 @@ export function Chart({ data = [] }: Props) {
             <SelectItem value="area">
               <div className="flex items-center">
                 <AreaChart className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Area Chart</p>
+                <p className="line-clamp-1">{t("area")}</p>
               </div>
             </SelectItem>
             <SelectItem value="line">
               <div className="flex items-center">
                 <LineChart className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Line Chart</p>
+                <p className="line-clamp-1">{t("line")}</p>
               </div>
             </SelectItem>
             <SelectItem value="bar">
               <div className="flex items-center">
                 <BarChart3 className="mr-2 size-4 shrink-0" />
-                <p className="line-clamp-1">Bar Chart</p>
+                <p className="line-clamp-1">{t("bar")}</p>
               </div>
             </SelectItem>
           </SelectContent>
@@ -68,9 +71,7 @@ export function Chart({ data = [] }: Props) {
         {data.length === 0 ? (
           <div className="flex h-[350px] w-full flex-col items-center justify-center gap-y-4">
             <FileSearch className="size-6 text-muted-foreground" />
-            <p className="text-sm text-muted-foreground">
-              No data for this period
-            </p>
+            <p className="text-sm text-muted-foreground">{t("noData")}</p>
           </div>
         ) : (
           <>

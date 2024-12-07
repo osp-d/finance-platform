@@ -17,12 +17,15 @@ import { useCreateAccount } from "@/features/accounts/api/useCreateAccount";
 import { useNewTransaction } from "@/features/transactions/hooks/useNewTransaction";
 import { useCreateTransaction } from "@/features/transactions/api/useCreateTransaction";
 import { TransactionForm } from "@/features/transactions/components/TransactionForm";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertTransactionsSchema.omit({ id: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function NewTransactionSheet() {
+  const t = useTranslations("features.transactions.components.new");
+
   const { isOpen, onClose } = useNewTransaction();
 
   const createMutation = useCreateTransaction();
@@ -66,8 +69,8 @@ export function NewTransactionSheet() {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-4 bg-white">
         <SheetHeader>
-          <SheetTitle>New Transaction</SheetTitle>
-          <SheetDescription>Add a new transaction</SheetDescription>
+          <SheetTitle>{t("title")}</SheetTitle>
+          <SheetDescription>{t("description")}</SheetDescription>
         </SheetHeader>
         {isLoading ? (
           <div className="absolute inset-0 flex items-center justify-center">

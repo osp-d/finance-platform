@@ -7,8 +7,11 @@ import { DataCard } from "@/components/DataCard";
 
 import { FaPiggyBank } from "react-icons/fa";
 import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 
 export function DataGrid() {
+  const t = useTranslations("components.dataGrid");
+
   const { data } = useGetSummary();
 
   const params = useSearchParams();
@@ -20,7 +23,7 @@ export function DataGrid() {
   return (
     <div className="mb-6 grid grid-cols-1 gap-8 pb-2 lg:grid-cols-3">
       <DataCard
-        title="Remaining"
+        title={t("remaining")}
         value={data?.remainingAmount}
         percentageChange={data?.remainingChange}
         icon={FaPiggyBank}
@@ -28,7 +31,7 @@ export function DataGrid() {
         dateRange={dateRangeLabel}
       />
       <DataCard
-        title="Income"
+        title={t("income")}
         value={data?.incomeAmount}
         percentageChange={data?.incomeChange}
         icon={FaArrowTrendUp}
@@ -36,7 +39,7 @@ export function DataGrid() {
         dateRange={dateRangeLabel}
       />
       <DataCard
-        title="Expenses"
+        title={t("expenses")}
         value={data?.expensesAmount}
         percentageChange={data?.expensesChange}
         icon={FaArrowTrendDown}

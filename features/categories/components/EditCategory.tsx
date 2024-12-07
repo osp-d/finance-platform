@@ -15,12 +15,15 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertCategorySchema.pick({ name: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function EditCategorySheet() {
+  const t = useTranslations("features.categories.components.edit");
+
   const { isOpen, onClose, id } = useOpenCategory();
   const categoryQuery = useGetCategory(id);
   const defaultValues = categoryQuery.data
@@ -38,8 +41,8 @@ export function EditCategorySheet() {
   const isLoading = categoryQuery.isLoading;
 
   const [ConfirmDialog, confirm] = useConfirm(
-    "Are you sure?",
-    "You are about to delete this category",
+    t("confirmTitle"),
+    t("confirmSubtitle"),
   );
 
   const onSubmit = (values: FormValues) => {
@@ -68,8 +71,8 @@ export function EditCategorySheet() {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="space-y-4 bg-white">
           <SheetHeader>
-            <SheetTitle>Edit Category</SheetTitle>
-            <SheetDescription>Edit an existing category</SheetDescription>
+            <SheetTitle>{t("title")}</SheetTitle>
+            <SheetDescription>{t("description")}</SheetDescription>
           </SheetHeader>
 
           {isLoading ? (

@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { convertAmountFromMilliunits } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function useGetTransaction(id?: string) {
+  const t = useTranslations("features.transactions.api.get.singular");
+
   const query = useQuery({
     enabled: !!id,
     queryKey: ["transaction", { id }],
@@ -12,7 +15,7 @@ export function useGetTransaction(id?: string) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch transaction");
+        throw new Error(t("fail"));
       }
 
       const { data } = await response.json();

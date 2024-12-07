@@ -8,6 +8,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTranslations } from "next-intl";
 
 type Props = {
   value: string;
@@ -17,6 +18,8 @@ type Props = {
 };
 
 export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
+  const t = useTranslations("components.amountInput");
+
   const parsedValue = parseFloat(value);
   const isIncome = parsedValue > 0;
   const isExpense = parsedValue < 0;
@@ -46,9 +49,7 @@ export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
               {isExpense && <MinusCircle className="size-3 text-white" />}
             </button>
           </TooltipTrigger>
-          <TooltipContent>
-            Use [+] for income and [-] for expenses
-          </TooltipContent>
+          <TooltipContent>{t("tooltip")}</TooltipContent>
         </Tooltip>
       </TooltipProvider>
 
@@ -63,8 +64,8 @@ export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
         disabled={disabled}
       />
       <p className="mt-2 text-xs text-muted-foreground">
-        {isIncome && "This will count as income"}
-        {isExpense && "This will count as expense"}
+        {isIncome && t("isIncome")}
+        {isExpense && t("isExpense")}
       </p>
     </div>
   );

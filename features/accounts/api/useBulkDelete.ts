@@ -2,6 +2,7 @@ import { InferRequestType, InferResponseType } from "hono";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type ResponseType = InferResponseType<
   (typeof client.api.accounts)["bulk-delete"]["$post"]
@@ -11,6 +12,8 @@ type RequestType = InferRequestType<
 >["json"];
 
 export function useBulkDeleteAccounts() {
+  const t = useTranslations("features.accounts.api.del.plural");
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -21,11 +24,11 @@ export function useBulkDeleteAccounts() {
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Accounts deleted");
+      toast.success(t("success"));
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
     },
     onError: () => {
-      toast.error("Failed to delete accounts");
+      toast.error(t("fail"));
     },
   });
 

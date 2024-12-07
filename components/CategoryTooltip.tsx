@@ -1,7 +1,10 @@
 import { formatCurrency } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from "next-intl";
 
 export function CategoryTooltip({ active, payload }: any) {
+  const t = useTranslations("components.categoryTooltip");
+
   if (!active) return null;
 
   const name = payload[0].payload.name;
@@ -17,7 +20,7 @@ export function CategoryTooltip({ active, payload }: any) {
         <div className="flex items-center justify-between gap-x-4">
           <div className="flex items-center gap-x-2">
             <div className="size-1.5 rounded-full bg-rose-500" />
-            <p className="text-sm text-muted-foreground">Expenses</p>
+            <p className="text-sm text-muted-foreground">{t("expenses")}</p>
           </div>
           <p className="text-right text-sm font-medium">
             {formatCurrency(value * -1)}

@@ -1,19 +1,21 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
+import { useTranslations } from "next-intl";
 
 export function WelcomeMessage() {
+  const t = useTranslations("components.welcomeMessage");
+
   const { user, isLoaded } = useUser();
 
   return (
     <div className="text-white">
       <h2 className="text-2xl font-medium lg:text-4xl">
-        Welcome back{isLoaded ? ", " : " "}
+        {t("title")}
+        {isLoaded ? ", " : " "}
         {user?.firstName}
       </h2>
-      <p className="text-sm text-neutral-200 lg:text-base">
-        This is your financial overview report
-      </p>
+      <p className="text-sm text-neutral-200 lg:text-base">{t("subtitle")}</p>
     </div>
   );
 }

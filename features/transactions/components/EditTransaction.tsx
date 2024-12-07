@@ -21,12 +21,15 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertTransactionsSchema.omit({ id: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function EditTransactionSheet() {
+  const t = useTranslations("features.transactions.components.edit");
+
   const { isOpen, onClose, id } = useOpenTransaction();
   const transactionQuery = useGetTransaction(id);
   const defaultValues = transactionQuery.data
@@ -85,8 +88,8 @@ export function EditTransactionSheet() {
     categoryQuery.isLoading;
 
   const [ConfirmDialog, confirm] = useConfirm(
-    "Are you sure?",
-    "You are about to delete this transaction",
+    t("confirmTitle"),
+    t("confirmSubtitle"),
   );
 
   const onSubmit = (values: FormValues) => {
@@ -115,8 +118,8 @@ export function EditTransactionSheet() {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="space-y-4 bg-white">
           <SheetHeader>
-            <SheetTitle>Edit transaction</SheetTitle>
-            <SheetDescription>Edit an existing transaction</SheetDescription>
+            <SheetTitle>{t("title")}</SheetTitle>
+            <SheetDescription>{t("description")}</SheetDescription>
           </SheetHeader>
 
           {isLoading ? (

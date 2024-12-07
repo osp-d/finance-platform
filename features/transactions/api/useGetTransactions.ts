@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { useSearchParams } from "next/navigation";
 import { convertAmountFromMilliunits } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function useGetTransactions() {
+  const t = useTranslations("features.transactions.api.get.singular");
   const params = useSearchParams();
   const from = params.get("from") || "";
   const to = params.get("to") || "";
@@ -21,7 +23,7 @@ export function useGetTransactions() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch transactions");
+        throw new Error(t("fail"));
       }
 
       const { data } = await response.json();

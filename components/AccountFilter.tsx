@@ -12,8 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 export function AccountFilter() {
+  const t = useTranslations("components.accountFilter");
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -57,7 +60,7 @@ export function AccountFilter() {
         <SelectValue placeholder="Select account" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">All accounts</SelectItem>
+        <SelectItem value="all">{t("accounts")}</SelectItem>
         {accounts?.map((account) => (
           <SelectItem key={account.id} value={account.id}>
             {account.name}

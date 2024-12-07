@@ -2,6 +2,7 @@ import { InferRequestType, InferResponseType } from "hono";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type ResponseType = InferResponseType<
   (typeof client.api.categories)["bulk-delete"]["$post"]
@@ -11,6 +12,8 @@ type RequestType = InferRequestType<
 >["json"];
 
 export function useBulkDeleteCategories() {
+  const t = useTranslations("features.categories.api.del.plural");
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -21,12 +24,12 @@ export function useBulkDeleteCategories() {
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Categories deleted");
+      toast.success(t("success"));
       queryClient.invalidateQueries({ queryKey: ["categories"] });
       queryClient.invalidateQueries({ queryKey: ["summary"] });
     },
     onError: () => {
-      toast.error("Failed to delete categories");
+      toast.error(t("fail"));
     },
   });
 

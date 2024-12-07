@@ -11,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useTranslations } from "next-intl";
 
 type Props = {
   value?: Date;
@@ -19,6 +20,8 @@ type Props = {
 };
 
 export function DatePicker({ value, onChange, disabled }: Props) {
+  const t = useTranslations("components.datePicker");
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -32,7 +35,7 @@ export function DatePicker({ value, onChange, disabled }: Props) {
         >
           <CalendarIcon className="mr-2 size-4" />
 
-          {value ? format(value, "PPP") : <span>Pick a date</span>}
+          {value ? format(value, "PPP") : <span>{t("pick")}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent>

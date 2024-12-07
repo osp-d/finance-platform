@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
+import { useTranslations } from "next-intl";
 
 export function useGetAccounts() {
+  const t = useTranslations("features.accounts.api.get.plural");
+
   const query = useQuery({
     queryKey: ["accounts"],
     queryFn: async () => {
       const response = await client.api.accounts.$get();
 
       if (!response.ok) {
-        throw new Error("Failed to fetch accounts");
+        throw new Error(t("fail"));
       }
 
       const { data } = await response.json();

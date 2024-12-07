@@ -16,8 +16,11 @@ import {
   PopoverTrigger,
   PopoverClose,
 } from "@/components/ui/popover";
+import { useTranslations } from "next-intl";
 
 export function DateFilter() {
+  const t = useTranslations("components.dateFilter");
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -90,7 +93,7 @@ export function DateFilter() {
               className="w-full"
               variant="outline"
             >
-              Reset
+              {t("reset")}
             </Button>
           </PopoverClose>
           <PopoverClose asChild>
@@ -99,7 +102,7 @@ export function DateFilter() {
               disabled={!date?.from || !date?.to}
               className="w-full"
             >
-              Apply
+              {t("apply")}
             </Button>
           </PopoverClose>
         </div>

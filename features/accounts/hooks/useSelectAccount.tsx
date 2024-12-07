@@ -11,11 +11,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export function useSelectAccount(): [
   () => JSX.Element,
   () => Promise<unknown>,
 ] {
+  const t = useTranslations("features.accounts.hooks.useSelectAccount");
+
   const accountsQuery = useGetAccounts();
   const accountMutation = useCreateAccount();
   const onCreateAccount = (name: string) => accountMutation.mutate({ name });
@@ -54,10 +57,8 @@ export function useSelectAccount(): [
       <Dialog open={promise !== null}>
         <DialogContent className="bg-white">
           <DialogHeader>
-            <DialogTitle>Select Account</DialogTitle>
-            <DialogDescription>
-              Please select an account to continue
-            </DialogDescription>
+            <DialogTitle>{t("title")}</DialogTitle>
+            <DialogDescription>{t("description")}</DialogDescription>
           </DialogHeader>
 
           <Select
@@ -69,9 +70,9 @@ export function useSelectAccount(): [
           />
 
           <DialogFooter className="pt-2">
-            <Button onClick={handleConfirm}>Confirm</Button>
+            <Button onClick={handleConfirm}>{t("confirm")}</Button>
             <Button onClick={handleCancel} variant="outline">
-              Close
+              {t("close")}
             </Button>
           </DialogFooter>
         </DialogContent>

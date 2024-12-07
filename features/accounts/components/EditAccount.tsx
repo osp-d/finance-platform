@@ -15,12 +15,15 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertAccountSchema.pick({ name: true });
 
 type FormValues = z.input<typeof FormSchema>;
 
 export function EditAccountSheet() {
+  const t = useTranslations("features.accounts.components.edit");
+
   const { isOpen, onClose, id } = useOpenAccount();
   const accountQuery = useGetAccount(id);
   const defaultValues = accountQuery.data
@@ -38,8 +41,8 @@ export function EditAccountSheet() {
   const isLoading = accountQuery.isLoading;
 
   const [ConfirmDialog, confirm] = useConfirm(
-    "Are you sure?",
-    "You are about to delete this transaction",
+    t("confirmTitle"),
+    t("confirmSubtitle"),
   );
 
   const onSubmit = (values: FormValues) => {
@@ -68,8 +71,8 @@ export function EditAccountSheet() {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="space-y-4 bg-white">
           <SheetHeader>
-            <SheetTitle>Edit Account</SheetTitle>
-            <SheetDescription>Edit an existing account</SheetDescription>
+            <SheetTitle>{t("title")}</SheetTitle>
+            <SheetDescription>{t("description")}</SheetDescription>
           </SheetHeader>
 
           {isLoading ? (

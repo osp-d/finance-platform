@@ -8,11 +8,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function useConfirm(
   title: string,
   message: string,
 ): [() => JSX.Element, () => Promise<unknown>] {
+  const t = useTranslations("useConfirm");
+
   const [promise, setPromise] = useState<{
     resolve: (value: boolean) => void;
   } | null>(null);
@@ -46,9 +49,9 @@ export function useConfirm(
             <DialogDescription>{message}</DialogDescription>
           </DialogHeader>
           <DialogFooter className="pt-2">
-            <Button onClick={handleConfirm}>Confirm</Button>
+            <Button onClick={handleConfirm}>{t("confirm")}</Button>
             <Button onClick={handleCancel} variant="outline">
-              Close
+              {t("close")}
             </Button>
           </DialogFooter>
         </DialogContent>

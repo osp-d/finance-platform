@@ -13,6 +13,7 @@ import {
   FormField,
   FormLabel,
 } from "@/components/ui/form";
+import { useTranslations } from "next-intl";
 
 const FormSchema = insertCategorySchema.pick({ name: true });
 
@@ -33,6 +34,8 @@ export const CategoryForm = ({
   onDelete,
   disabled,
 }: Props) => {
+  const t = useTranslations("features.categories.components.form");
+
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: defaultValues,
@@ -57,11 +60,11 @@ export const CategoryForm = ({
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-bold">Name</FormLabel>
+              <FormLabel className="font-bold">{t("name.title")}</FormLabel>
               <FormControl>
                 <Input
                   disabled={disabled}
-                  placeholder="e.g. Food, Shopping, etc."
+                  placeholder={t("name.placeholder")}
                   {...field}
                   required
                 />
@@ -70,7 +73,7 @@ export const CategoryForm = ({
           )}
         />
         <Button className="w-full" disabled={disabled}>
-          {id ? "Save changes" : "Create category"}
+          {id ? t("save") : t("create")}
         </Button>
 
         {!!id && (
@@ -82,7 +85,7 @@ export const CategoryForm = ({
             variant="outline"
           >
             <Trash className="size-4" />
-            Delete category
+            {t("del")}
           </Button>
         )}
       </form>

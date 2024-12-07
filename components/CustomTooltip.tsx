@@ -1,8 +1,11 @@
 import { format } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from "next-intl";
 
 export function CustomTooltip({ active, payload }: any) {
+  const t = useTranslations("components.customTooltip");
+
   if (!active) return null;
 
   const date = payload[0].payload.date;
@@ -19,7 +22,7 @@ export function CustomTooltip({ active, payload }: any) {
         <div className="flex items-center justify-between gap-x-4">
           <div className="flex items-center gap-x-2">
             <div className="size-1.5 rounded-full bg-blue-500" />
-            <p className="text-sm text-muted-foreground">Income</p>
+            <p className="text-sm text-muted-foreground">{t("income")}</p>
           </div>
           <p className="text-right text-sm font-medium">
             {formatCurrency(income)}
@@ -31,7 +34,7 @@ export function CustomTooltip({ active, payload }: any) {
         <div className="flex items-center justify-between gap-x-4">
           <div className="flex items-center gap-x-2">
             <div className="size-1.5 rounded-full bg-rose-500" />
-            <p className="text-sm text-muted-foreground">Expenses</p>
+            <p className="text-sm text-muted-foreground">{t("expenses")}</p>
           </div>
           <p className="text-right text-sm font-medium">
             {formatCurrency(expenses * -1)}

@@ -2,6 +2,7 @@ import { InferRequestType, InferResponseType } from "hono";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type ResponseType = InferResponseType<
   (typeof client.api.accounts)[":id"]["$patch"]
@@ -11,6 +12,8 @@ type RequestType = InferRequestType<
 >["json"];
 
 export function useEditAccount(id?: string) {
+  const t = useTranslations("features.accounts.api.edit");
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -22,14 +25,14 @@ export function useEditAccount(id?: string) {
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Account edited");
+      toast.success(t("success"));
       queryClient.invalidateQueries({ queryKey: ["account", { id }] });
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
       queryClient.invalidateQueries({ queryKey: ["summary"] });
     },
     onError: () => {
-      toast.error("Failed to edit account");
+      toast.error(t("fail"));
     },
   });
 

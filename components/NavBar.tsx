@@ -1,44 +1,24 @@
 "use client";
 
 import { NavButton } from "@/components/NavButton";
-import { usePathname, useRouter } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useMedia } from "react-use";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-
-const routes = [
-  {
-    href: "/dashboard",
-    label: "Overview",
-  },
-  {
-    href: "/dashboard/transactions",
-    label: "Transactions",
-  },
-  {
-    href: "/dashboard/accounts",
-    label: "Accounts",
-  },
-  {
-    href: "/dashboard/categories",
-    label: "Categories",
-  },
-
-  {
-    href: "/dashboard/settings",
-    label: "Settings",
-  },
-];
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/src/i18n/routing";
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const isMobile = useMedia("(max-width: 1024px", false);
   const pathname = usePathname();
+  const t = useTranslations("navBar");
+  const routes = [1, 2, 3, 4, 5] as const;
 
   const onClick = (href: string) => {
+    console.log(href);
     router.push(href);
     setIsOpen(false);
   };
@@ -59,12 +39,14 @@ export function NavBar() {
             {routes.map((route) => {
               return (
                 <Button
-                  key={route.href}
-                  variant={route.href === pathname ? "secondary" : "ghost"}
-                  onClick={() => onClick(route.href)}
+                  key={t(`${route}.href`)}
+                  variant={
+                    t(`${route}.href`) === pathname ? "secondary" : "ghost"
+                  }
+                  onClick={() => onClick(t(`${route}.href`))}
                   className="w-full justify-start"
                 >
-                  {route.label}
+                  {t(`${route}.label`)}
                 </Button>
               );
             })}
@@ -79,10 +61,10 @@ export function NavBar() {
       {routes.map((route) => {
         return (
           <NavButton
-            key={route.href}
-            href={route.href}
-            label={route.label}
-            isActive={pathname === route.href}
+            key={t(`${route}.href`)}
+            href={t(`${route}.href`)}
+            label={t(`${route}.label`)}
+            isActive={pathname === t(`${route}.href`)}
           />
         );
       })}

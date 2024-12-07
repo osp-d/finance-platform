@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
+import { useTranslations } from "next-intl";
 
 export function useGetCategory(id?: string) {
+  const t = useTranslations("features.categories.api.get.singular");
+
   const query = useQuery({
     enabled: !!id,
     queryKey: ["category", { id }],
@@ -11,7 +14,7 @@ export function useGetCategory(id?: string) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch category");
+        throw new Error(t("fail"));
       }
 
       const { data } = await response.json();

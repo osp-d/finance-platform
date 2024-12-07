@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CountUp } from "@/components/CountUp";
+import { useTranslations } from "next-intl";
 
 const boxVariant = cva("rounded-md p-3", {
   variants: {
@@ -57,6 +58,8 @@ export const DataCard = ({
   dateRange,
   percentageChange = 0,
 }: DataCardProps) => {
+  const t = useTranslations("components.dataCard");
+
   return (
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex flex-row items-center justify-between gap-x-4">
@@ -88,8 +91,8 @@ export const DataCard = ({
             percentageChange < 0 && "text-rose-500",
           )}
         >
-          {formatPercentage(percentageChange, { addPrefix: true })} from last
-          period
+          {formatPercentage(percentageChange, { addPrefix: true })}{" "}
+          {t("period")}
         </p>
       </CardContent>
     </Card>
