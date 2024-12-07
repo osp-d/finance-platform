@@ -27,12 +27,9 @@ export function NavBar() {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
-          <Button
-            size="sm"
-            className="focus:bg-white-30 border-none bg-white/10 font-normal text-white outline-none transition hover:bg-white/20 focus-visible:ring-transparent focus-visible:ring-offset-0"
-          >
+          <div className="focus:bg-white-30 rounded-sm border-none bg-white/10 p-2 font-normal text-white outline-none transition hover:bg-white/20 focus-visible:ring-transparent focus-visible:ring-offset-0">
             <Menu className="size-4" />
-          </Button>
+          </div>
         </SheetTrigger>
         <SheetContent side="left" className="bg-white p-2">
           <nav className="flex flex-col gap-y-2 pt-6">

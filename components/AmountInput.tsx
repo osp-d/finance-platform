@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useTranslations } from "next-intl";
+import { forwardRef } from "react";
 
 type Props = {
   value: string;
@@ -17,8 +18,10 @@ type Props = {
   disabled?: boolean;
 };
 
-export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
+export const AmountInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const t = useTranslations("components.amountInput");
+
+  const { value, onChange, placeholder, disabled } = props;
 
   const parsedValue = parseFloat(value);
   const isIncome = parsedValue > 0;
@@ -62,6 +65,7 @@ export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
         decimalScale={2}
         onValueChange={onChange}
         disabled={disabled}
+        ref={ref}
       />
       <p className="mt-2 text-xs text-muted-foreground">
         {isIncome && t("isIncome")}
@@ -69,4 +73,6 @@ export function AmountInput({ value, onChange, placeholder, disabled }: Props) {
       </p>
     </div>
   );
-}
+});
+
+AmountInput.displayName = "AmountInput";
