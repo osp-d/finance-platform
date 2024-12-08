@@ -5,6 +5,7 @@ import { ImportTable } from "./ImportTable";
 import { convertAmountToMilliunits } from "@/lib/utils";
 import { format, parse } from "date-fns";
 import { transactions as transactionSchema } from "@/db/schema";
+import { useTranslations } from "next-intl";
 
 const dateFormat = "yyyy-MM-dd HH:mm:ss";
 const outputFormat = "yyyy-MM-dd";
@@ -22,6 +23,8 @@ type Props = {
 };
 
 export function ImportCard({ data, onCancel, onSubmit }: Props) {
+  const t = useTranslations("dashboard.importCard");
+
   const [selectedColumns, setSelectedColumns] = useState<SelectedColumnsState>(
     {},
   );
@@ -102,12 +105,10 @@ export function ImportCard({ data, onCancel, onSubmit }: Props) {
     <div>
       <Card className="border-none drop-shadow-sm">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="line-clamp-1 text-xl">
-            Import Transaction
-          </CardTitle>
+          <CardTitle className="line-clamp-1 text-xl">{t("import")}</CardTitle>
           <div className="flex flex-col items-center gap-x-2 gap-y-2 lg:flex-row">
             <Button size="sm" onClick={onCancel} className="w-full lg:w-auto">
-              Cancel
+              {t("cancel")}
             </Button>
             <Button
               size="sm"
@@ -115,7 +116,7 @@ export function ImportCard({ data, onCancel, onSubmit }: Props) {
               onClick={handleContinue}
               className="w-full lg:w-auto"
             >
-              Continue ({progress} / {requiredOptions.length})
+              {t("continue")} ({progress} / {requiredOptions.length})
             </Button>
           </div>
         </CardHeader>

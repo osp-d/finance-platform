@@ -17,6 +17,7 @@ import { DataTable } from "@/src/app/[locale]/dashboard/transactions/DataTable";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UploadButton } from "./UploadButton";
 import { ImportCard } from "./ImportCard";
+import { useTranslations } from "next-intl";
 
 enum VARIANTS {
   LIST = "LIST",
@@ -30,6 +31,8 @@ const INITIAL_IMPORT_RESULTS = {
 };
 
 export default function TransactionsPage() {
+  const t = useTranslations("dashboard.page");
+
   const [AccountDialog, confirm] = useSelectAccount();
 
   const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
@@ -60,7 +63,7 @@ export default function TransactionsPage() {
     const accountId = await confirm();
 
     if (!accountId) {
-      return toast.error("Please select an account to continue");
+      return toast.error(t("transactions.error"));
     }
 
     const data = values.map((value) => ({
@@ -108,7 +111,7 @@ export default function TransactionsPage() {
       <Card className="border-none drop-shadow-sm">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
           <CardTitle className="line-clamp-1 text-xl">
-            Transaction History
+            {t("transactions.history")}
           </CardTitle>
           <div className="flex flex-col items-center gap-x-2 gap-y-2 lg:flex-row">
             <Button
@@ -117,7 +120,7 @@ export default function TransactionsPage() {
               className="w-full lg:w-auto"
             >
               <Plus className="mr-2 size-4" />
-              Add new
+              {t("add")}
             </Button>
             <UploadButton onUpload={onUpload} />
           </div>

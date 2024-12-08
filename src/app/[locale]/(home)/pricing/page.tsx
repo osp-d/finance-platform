@@ -14,54 +14,51 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
+
+type BasicFeatureKeys = "1" | "2" | "3" | "4" | "5";
+type ProFeatureKeys = BasicFeatureKeys | "6";
+
+type DynamicMessageKeys =
+  | `tiers.basic.features.${BasicFeatureKeys}`
+  | `tiers.pro.features.${ProFeatureKeys}`;
 
 interface PricingTier {
   name: string;
   price: string;
   description: string;
-  features: string[];
+  features: BasicFeatureKeys[] | ProFeatureKeys[];
   cta: string;
   paid: boolean;
 }
 
-const pricingTiers: PricingTier[] = [
-  {
-    name: "Basic",
-    price: "$0.00",
-    description: "Essential features for individuals",
-    features: [
-      "1 account",
-      "2 devices",
-      "1 year of history",
-      "Debt tracking",
-      "Basic analytics",
-    ],
-    cta: "Get Started",
-    paid: false,
-  },
-  {
-    name: "Pro",
-    price: "$4.99",
-    description: "Advanced features for demanding users",
-    features: [
-      "5 accounts",
-      "5 devices",
-      "8 years of history",
-      "Debt tracking",
-      "Advanced analytics",
-      "Email support",
-    ],
-    cta: "Upgrade to Pro",
-    paid: true,
-  },
-];
-
 export default function Pricing() {
+  const t = useTranslations("pricing");
+
   const router = useRouter();
 
   const handleClick = (status: boolean) => {
     status ? router.push("/sign-in") : router.push("/sign-up");
   };
+
+  const pricingTiers: PricingTier[] = [
+    {
+      name: t("tiers.basic.name"),
+      price: t("tiers.basic.price"),
+      description: t("tiers.basic.description"),
+      features: ["1", "2", "3", "4", "5"],
+      cta: t("tiers.basic.cta"),
+      paid: false,
+    },
+    {
+      name: t("tiers.pro.name"),
+      price: t("tiers.pro.price"),
+      description: t("tiers.pro.description"),
+      features: ["1", "2", "3", "4", "5", "6"],
+      cta: t("tiers.pro.cta"),
+      paid: true,
+    },
+  ];
 
   return (
     <div className="flex h-screen flex-col justify-between">
@@ -73,11 +70,10 @@ export default function Pricing() {
             <div className="flex flex-col justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Choose Your Plan
+                  {t("header.title")}
                 </h1>
                 <p className="mx-auto max-w-[600px] text-zinc-500 dark:text-zinc-400 md:text-xl">
-                  Select the perfect plan for your needs. Upgrade or downgrade
-                  at any time.
+                  {t("header.subtitle")}
                 </p>
               </div>
             </div>
@@ -91,12 +87,16 @@ export default function Pricing() {
                   <CardContent className="grid gap-4">
                     <span className="text-4xl font-bold">{tier.price}</span>
                     <ul className="grid gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      {tier.features.map((feature) => (
-                        <li key={feature} className="flex items-center">
-                          <Check className="mr-2 h-4 w-4" />
-                          {feature}
-                        </li>
-                      ))}
+                      {tier.features.map((feature) => {
+                        const featureKey =
+                          `tiers.${tier.paid ? "pro" : "basic"}.features.${feature}` as DynamicMessageKeys;
+                        return (
+                          <li key={featureKey} className="flex items-center">
+                            <Check className="mr-2 h-4 w-4" />
+                            {t(featureKey)}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </CardContent>
                   <CardFooter>

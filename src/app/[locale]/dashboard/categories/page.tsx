@@ -10,8 +10,11 @@ import { DataTable } from "@/src/app/[locale]/dashboard/categories/DataTable";
 import { columns } from "@/src/app/[locale]/dashboard/categories/columns";
 import { Loader2, Plus } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslations } from "next-intl";
 
 export default function CategoriesPage() {
+  const t = useTranslations("dashboard.page");
+
   const newCategory = useNewCategory();
   const categoriesQuery = useGetCategories();
   const categories = categoriesQuery.data || [];
@@ -38,10 +41,12 @@ export default function CategoriesPage() {
     <div className="mx-auto -mt-24 w-full max-w-screen-2xl pb-10">
       <Card className="border-none drop-shadow-sm">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="line-clamp-1 text-xl">Categories</CardTitle>
+          <CardTitle className="line-clamp-1 text-xl">
+            {t("categories")}
+          </CardTitle>
           <Button size="sm" onClick={newCategory.onOpen}>
             <Plus className="mr-2 size-4" />
-            Add new
+            {t("add")}
           </Button>
         </CardHeader>
 

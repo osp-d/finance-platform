@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import { AccountColumn } from "@/src/app/[locale]/dashboard/transactions/AccountColumn";
 import { CategoryColumn } from "@/src/app/[locale]/dashboard/transactions/CategoryColumn";
+import { ColumnName } from "@/components/ColumnName";
 
 export type ResponseType = InferResponseType<
   typeof client.api.transactions.$get,
@@ -49,7 +50,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Date
+          <ColumnName name="Date" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -68,7 +69,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Category
+          <ColumnName name="Category" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -91,7 +92,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Payee
+          <ColumnName name="Payee" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -105,7 +106,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Amount
+          <ColumnName name="Amount" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -131,7 +132,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Account
+          <ColumnName name="Account" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

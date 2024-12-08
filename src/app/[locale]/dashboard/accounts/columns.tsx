@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { InferResponseType } from "hono";
 import { client } from "@/lib/hono";
 import { Actions } from "@/src/app/[locale]/dashboard/accounts/actions";
+import { ColumnName } from "@/components/ColumnName";
 
 export type ResponseType = InferResponseType<
   typeof client.api.accounts.$get,
@@ -44,7 +45,7 @@ export const columns: ColumnDef<ResponseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          <ColumnName name="Name" />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

@@ -23,39 +23,42 @@ import { Card } from "@/components/ui/card";
 import { MailIcon } from "lucide-react";
 import { FaTelegram } from "react-icons/fa6";
 import { Link } from "@/src/i18n/routing";
-
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(2, {
-      message: "Username must be at least 2 characters",
-    })
-    .max(30, {
-      message: "Username should not exceed 30 characters",
-    }),
-  company: z
-    .string()
-    .min(2, {
-      message: "Username must be at least 2 characters",
-    })
-    .max(30, {
-      message: "Username should not exceed 30 characters",
-    })
-    .optional(),
-  contacts: z.union([
-    z.string().refine(isEmail, {
-      message: "Contacts must contain email or mobile number",
-    }),
-    z.string().refine(isMobilePhone, {
-      message: "Contacts must contain email or mobile number",
-    }),
-  ]),
-  message: z.string().max(200, {
-    message: "Message should not exceed 200 characters",
-  }),
-});
+import { useTranslations } from "next-intl";
 
 export default function Contacts() {
+  const t = useTranslations("contacts");
+
+  const formSchema = z.object({
+    name: z
+      .string()
+      .min(2, {
+        message: t("form.errors.name.min"),
+      })
+      .max(30, {
+        message: t("form.errors.name.max"),
+      }),
+    company: z
+      .string()
+      .min(2, {
+        message: t("form.errors.company.min"),
+      })
+      .max(30, {
+        message: t("form.errors.company.max"),
+      })
+      .optional(),
+    contacts: z.union([
+      z.string().refine(isEmail, {
+        message: t("form.errors.contacts"),
+      }),
+      z.string().refine(isMobilePhone, {
+        message: t("form.errors.contacts"),
+      }),
+    ]),
+    message: z.string().max(200, {
+      message: t("form.errors.message"),
+    }),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -71,14 +74,11 @@ export default function Contacts() {
       <div className="flex justify-center gap-10 py-8">
         <div className="flex max-w-80 flex-col gap-10">
           <div className="flex flex-col gap-4">
-            <p className="font-bold">Contact</p>
+            <p className="font-bold">{t("header.name")}</p>
             <h1 className="font-bold sm:text-5xl xl:text-6xl/none">
-              Don&apos;t hesitate to contact us
+              {t("header.title")}
             </h1>
-            <p className="text-slate-500">
-              Everyone is welcome: individual clients, companies, possible
-              partners, and investors
-            </p>
+            <p className="text-slate-500">{t("header.subtitle")}</p>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -87,13 +87,13 @@ export default function Contacts() {
                 <MailIcon fill="white" className="h-5 w-5" />
               </div>
               <Link className="text-base font-medium" href="#">
-                financeplatforminflux@gmail.com
+                {t("contactInfo.email")}
               </Link>
             </div>
             <div className="flex items-center gap-4">
               <FaTelegram className="h-8 w-8" />
               <Link className="text-base font-medium" href="#">
-                t.me/fncplatform
+                {t("contactInfo.telegram")}
               </Link>
             </div>
           </div>
@@ -111,9 +111,14 @@ export default function Contacts() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-bold">Name</FormLabel>
+                      <FormLabel className="font-bold">
+                        {t("form.labels.name")}
+                      </FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Name" {...field} />
+                        <Input
+                          placeholder={t("form.placeholders.name")}
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -125,9 +130,14 @@ export default function Contacts() {
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-bold">Company</FormLabel>
+                      <FormLabel className="font-bold">
+                        {t("form.labels.company")}
+                      </FormLabel>
                       <FormControl>
-                        <Input placeholder="Company Name" {...field} />
+                        <Input
+                          placeholder={t("form.placeholders.company")}
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -140,10 +150,12 @@ export default function Contacts() {
                 name="contacts"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-bold">Contacts</FormLabel>
+                    <FormLabel className="font-bold">
+                      {t("form.labels.contacts")}
+                    </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Write your email or phone"
+                        placeholder={t("form.placeholders.contacts")}
                         {...field}
                       />
                     </FormControl>
@@ -157,9 +169,14 @@ export default function Contacts() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-bold">Message</FormLabel>
+                    <FormLabel className="font-bold">
+                      {t("form.labels.message")}
+                    </FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Your Message" {...field} />
+                      <Textarea
+                        placeholder={t("form.placeholders.message")}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -167,7 +184,7 @@ export default function Contacts() {
               />
 
               <Button type="submit" className="font-semibold">
-                Submit
+                {t("form.button")}
               </Button>
             </form>
           </Form>

@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 type Props = {
   columnIndex: number;
@@ -13,13 +14,15 @@ type Props = {
   onChange: (columnIndex: number, value: string | null) => void;
 };
 
-const options = ["amount", "date", "payee"];
-
 export function TableHeadSelect({
   columnIndex,
   selectedColumns,
   onChange,
 }: Props) {
+  const t = useTranslations("dashboard.tableHeadSelect");
+
+  const options = [t("options.1"), t("options.2"), t("options.3")];
+
   const currentSelection = selectedColumns[`column_${columnIndex}`];
 
   return (
@@ -37,7 +40,7 @@ export function TableHeadSelect({
       </SelectTrigger>
 
       <SelectContent>
-        <SelectItem value="skip">Skip</SelectItem>
+        <SelectItem value="skip">{t("skip")}</SelectItem>
         {options.map((option, index) => {
           const disabled =
             Object.values(selectedColumns).includes(option) &&

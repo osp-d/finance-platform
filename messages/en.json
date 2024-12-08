@@ -1,4 +1,29 @@
 {
+  "main": {
+    "intro": {
+      "heading": "Get sense of your financial data",
+      "description": "Effortlessly track your transactions and gain powerful insights into your financial data. See where your money goes, visualize trends, and take control of your financial future—all in one intuitive platform.",
+      "buttonLabel": "Try Finance for free"
+    },
+    "features": {
+      "feature1": {
+        "heading": "Comprehensive Transaction Tracking",
+        "description": "Automatically sync your accounts or input transactions manually. Stay on top of your expenses, income, and financial habits with real-time updates."
+      },
+      "feature2": {
+        "heading": "Visualize Your Data",
+        "description": "Interactive charts and graphs make it easy to understand your spending patterns, compare categories, and identify areas for improvement."
+      },
+      "feature3": {
+        "heading": "Financial Insights Made Easy",
+        "description": "Receive automatic summaries and actionable tips based on your financial data to help you save more and spend smarter."
+      },
+      "feature4": {
+        "heading": "Customizable and Secure",
+        "description": "Tailor the platform to fit your unique financial goals. Your data is encrypted and privacy is our top priority."
+      }
+    }
+  },
   "navBar": {
     "1": {
       "href": "/dashboard",
@@ -46,6 +71,7 @@
   },
   "contacts": {
     "header": {
+      "name": "Contact",
       "title": "Don't hesitate to contact us",
       "subtitle": "Everyone is welcome: individual clients, companies, possible partners, and investors"
     },
@@ -183,7 +209,7 @@
       },
       "section5": {
         "title": "4. Data Security",
-        "content": "We implement industry-standard security measures, including encryption, access controls, and regular monitoring. However, no system is completely secure, and we cannot guarantee the absolute security of your data."
+        "content": "We implement industry-standard security measures, including encryption, access controls, and regular monitoring."
       },
       "section6": {
         "title": "5. Your Rights and Choices",
@@ -307,9 +333,22 @@
       "result": "No results.",
       "prev": "Previous",
       "next": "Next",
-      "of": "of",
-      "selected": "row(s) selected.",
-      "del": "Delete"
+      "of": " of ",
+      "selected": " row(s) selected.",
+      "del": "Delete",
+      "filter": "Filter",
+      "filterKeys": {
+        "name": "name",
+        "payee": "payee"
+      },
+      "columns": {
+        "Account": "Account",
+        "Amount": "Amount",
+        "Category": "Category",
+        "Date": "Date",
+        "Name": "Name",
+        "Payee": "Payee"
+      }
     },
     "page": {
       "accounts": "Accounts",

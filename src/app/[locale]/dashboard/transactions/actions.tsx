@@ -12,18 +12,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   id: string;
 };
 
 export function Actions({ id }: Props) {
+  const t = useTranslations("dashboard.actions");
+
   const { onOpen } = useOpenTransaction();
 
   const deleteMutation = useDeleteTransaction(id);
   const [ConfirmDialog, confirm] = useConfirm(
-    "Are you sure?",
-    "You are about to delete this transaction",
+    t("transactions.confirmTitle"),
+    t("transactions.confirmSubtitle"),
   );
 
   const handleDelete = async () => {
@@ -49,14 +52,14 @@ export function Actions({ id }: Props) {
             onClick={() => onOpen(id)}
           >
             <Edit className="mr-2 size-4" />
-            Edit
+            {t("edit")}
           </DropdownMenuItem>
           <DropdownMenuItem
             disabled={deleteMutation.isPending}
             onClick={() => handleDelete()}
           >
             <Trash className="mr-2 size-4" />
-            Delete
+            {t("del")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
