@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Separator } from "@/components/ui/separator";
 import { LocaleSelect } from "@/src/app/[locale]/(home)/LocaleSelect";
 
-export function Preferences() {
+function Preferences() {
   const t = useTranslations("dashboard.settings.preferences");
 
   return (
