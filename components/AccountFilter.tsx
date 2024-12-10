@@ -1,7 +1,8 @@
 "use client";
 
 import qs from "query-string";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/src/i18n/routing";
 import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
 import { useGetSummary } from "@/features/summary/api/useGetSummary";
 
