@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetSummary } from "@/features/summary/api/useGetSummary";
-import { formatDateRange } from "@/lib/utils";
+import { useFormatDateRange } from "@/hooks/useFormatDateRange";
 import { useSearchParams } from "next/navigation";
 import { DataCard } from "@/components/DataCard";
 
@@ -18,7 +18,7 @@ export function DataGrid() {
   const to = params.get("to") || undefined;
   const from = params.get("from") || undefined;
 
-  const dateRangeLabel = formatDateRange({ to, from });
+  const dateRangeLabel = useFormatDateRange({ to, from });
 
   return (
     <div className="mb-6 grid grid-cols-1 gap-8 pb-2 lg:grid-cols-3">

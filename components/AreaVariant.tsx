@@ -8,6 +8,8 @@ import {
   CartesianGrid,
 } from "recharts";
 import { CustomTooltip } from "@/components/CustomTooltip";
+import { useLocale } from "next-intl";
+import { ru } from "date-fns/locale";
 
 type Props = {
   data: {
@@ -18,6 +20,8 @@ type Props = {
 };
 
 export function AreaVariant({ data }: Props) {
+  const locale = useLocale();
+
   return (
     <ResponsiveContainer width="100%" height={350}>
       <AreaChart data={data}>
@@ -36,7 +40,11 @@ export function AreaVariant({ data }: Props) {
           axisLine={false}
           tickLine={false}
           dataKey="date"
-          tickFormatter={(value) => format(value, "dd MMM")}
+          tickFormatter={(value) =>
+            locale === "en"
+              ? format(value, "dd MMM")
+              : format(value, "dd MMM", { locale: ru })
+          }
           style={{ fontSize: "12px" }}
           tickMargin={16}
         />

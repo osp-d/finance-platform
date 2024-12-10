@@ -4,10 +4,11 @@ import { useState } from "react";
 import { format, subDays } from "date-fns";
 import { DateRange } from "react-day-picker";
 import qs from "query-string";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/src/i18n/routing";
 
 import { ChevronDown } from "lucide-react";
-import { formatDateRange } from "@/lib/utils";
+import { useFormatDateRange } from "@/hooks/useFormatDateRange";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -71,7 +72,7 @@ export function DateFilter() {
           variant="outline"
           className="test-white h-9 w-full rounded-md border-none bg-white/10 px-3 font-normal outline-none transition hover:bg-white/20 hover:text-white focus:bg-white/30 focus:ring-transparent focus:ring-offset-0 lg:w-auto"
         >
-          <span>{formatDateRange(paramState)}</span>
+          <span>{useFormatDateRange(paramState)}</span>
           <ChevronDown className="ml-2 size-4 opacity-50" />
         </Button>
       </PopoverTrigger>

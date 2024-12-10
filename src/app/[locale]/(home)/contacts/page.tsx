@@ -71,11 +71,11 @@ export default function Contacts() {
     <div className="flex h-screen flex-col justify-between">
       <HomeNavBar />
 
-      <div className="flex justify-center gap-10 py-8">
+      <div className="flex justify-center gap-14 py-8">
         <div className="flex max-w-80 flex-col gap-10">
           <div className="flex flex-col gap-4">
             <p className="font-bold">{t("header.name")}</p>
-            <h1 className="font-bold sm:text-5xl xl:text-6xl/none">
+            <h1 className="font-bold sm:text-4xl xl:text-5xl/none">
               {t("header.title")}
             </h1>
             <p className="text-slate-500">{t("header.subtitle")}</p>

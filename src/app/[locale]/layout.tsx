@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/src/i18n/routing";
+import { enUS, ruRU } from "@clerk/localizations";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,7 +43,7 @@ export default async function RootLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <ClerkProvider>
+      <ClerkProvider localization={locale === "en" ? enUS : ruRU}>
         <html lang={locale} className={GeistSans.className}>
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}

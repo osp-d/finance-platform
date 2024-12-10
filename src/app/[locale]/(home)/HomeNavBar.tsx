@@ -4,6 +4,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link } from "@/src/i18n/routing";
 import { useTranslations } from "next-intl";
+import { LocaleSelect } from "@/src/app/[locale]/(home)/LocaleSelect";
 
 export default function HomeNavBar() {
   const t = useTranslations("homeNavBar");
@@ -40,7 +41,9 @@ export default function HomeNavBar() {
           </NavigationMenuItem>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
+          <LocaleSelect short={true} />
+
           <NavigationMenuItem>
             <Link
               href="/sign-in"

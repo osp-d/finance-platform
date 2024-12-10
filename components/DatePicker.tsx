@@ -11,7 +11,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { ru } from "date-fns/locale";
 
 type Props = {
   value?: Date;
@@ -21,6 +22,7 @@ type Props = {
 
 export function DatePicker({ value, onChange, disabled }: Props) {
   const t = useTranslations("components.datePicker");
+  const locale = useLocale();
 
   return (
     <Popover>
@@ -35,7 +37,15 @@ export function DatePicker({ value, onChange, disabled }: Props) {
         >
           <CalendarIcon className="mr-2 size-4" />
 
-          {value ? format(value, "PPP") : <span>{t("pick")}</span>}
+          {value ? (
+            locale === "en" ? (
+              format(value, "PPP")
+            ) : (
+              format(value, "PPP", { locale: ru })
+            )
+          ) : (
+            <span>{t("pick")}</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent>

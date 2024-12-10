@@ -1,10 +1,12 @@
 import { format } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { ru } from "date-fns/locale";
 
 export function CustomTooltip({ active, payload }: any) {
   const t = useTranslations("components.customTooltip");
+  const locale = useLocale();
 
   if (!active) return null;
 
@@ -15,7 +17,9 @@ export function CustomTooltip({ active, payload }: any) {
   return (
     <div className="overflow-hidden rounded-sm border bg-white shadow-sm">
       <div className="bg-muted p-2 px-3 text-sm text-muted-foreground">
-        {format(date, "MMM dd, yyyy")}
+        {locale === "en"
+          ? format(date, "MMM dd, yyyy")
+          : format(date, "dd MMM, yyyy", { locale: ru })}
       </div>
       <Separator />
       <div className="space-y-1 p-2 px-3">
