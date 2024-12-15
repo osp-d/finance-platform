@@ -140,15 +140,13 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold">
             {t("sections.section8.title")}
           </h2>
-          <p className="mt-4">
-            {t("sections.section8.note")}
-            <ul className="mt-2 list-disc pl-5">
-              <li>{t("sections.section8.content.use1")}</li>
-              <li>{t("sections.section8.content.use2")}</li>
-              <li>{t("sections.section8.content.use3")}</li>
-            </ul>
-            <p className="mt-4">{t("sections.section8.content.note")}</p>
-          </p>
+          <p className="mt-4">{t("sections.section8.note")} </p>
+          <ul className="mt-2 list-disc pl-5">
+            <li>{t("sections.section8.content.use1")}</li>
+            <li>{t("sections.section8.content.use2")}</li>
+            <li>{t("sections.section8.content.use3")}</li>
+          </ul>
+          <p className="mt-4">{t("sections.section8.content.note")}</p>
         </section>
 
         <section className="mt-6">
