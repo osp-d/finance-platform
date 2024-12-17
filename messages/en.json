@@ -628,6 +628,7 @@
   },
   "signIn": {
     "title": "Welcome back",
-    "subtitle": "Log in or create account to access the dashboard"
+    "subtitle": "Log in or create account to access the dashboard",
+    "back": "Go back"
   }
 }

@@ -9,7 +9,7 @@ export function WelcomeMessage() {
   const { user, isLoaded } = useUser();
 
   return (
-    <div className="text-white">
+    <div className="pt-8 text-white">
       <h2 className="text-2xl font-medium lg:text-4xl">
         {t("title")}
         {isLoaded ? ", " : " "}

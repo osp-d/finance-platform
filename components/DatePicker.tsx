@@ -25,7 +25,7 @@ export function DatePicker({ value, onChange, disabled }: Props) {
   const locale = useLocale();
 
   return (
-    <Popover>
+    <Popover modal={true}>
       <PopoverTrigger asChild>
         <Button
           disabled={disabled}
