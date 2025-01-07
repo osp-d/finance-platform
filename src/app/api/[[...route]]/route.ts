@@ -4,6 +4,7 @@ import accounts from "@/src/app/api/[[...route]]/accounts";
 import categories from "@/src/app/api/[[...route]]/categories";
 import transactions from "@/src/app/api/[[...route]]/transactions";
 import summary from "@/src/app/api/[[...route]]/summary";
+import plans from "@/src/app/api/[[...route]]/plans";
 
 export const runtime = "edge";
 
@@ -12,7 +13,8 @@ const routes = app
   .route("/accounts", accounts)
   .route("/categories", categories)
   .route("/transactions", transactions)
-  .route("/summary", summary);
+  .route("/summary", summary)
+  .route("/plans", plans);
 
 export const GET = handle(app);
 export const POST = handle(app);
