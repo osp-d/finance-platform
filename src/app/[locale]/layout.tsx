@@ -48,6 +48,8 @@ export default async function RootLayout({
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
+            <script src="https://app.lemonsqueezy.com/js/lemon.js" defer />
+
             <QueryProvider>
               {children}
               <SheetProvider />

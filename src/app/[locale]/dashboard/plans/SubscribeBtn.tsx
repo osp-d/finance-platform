@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "@/src/i18n/routing";
 import { Loader2 } from "lucide-react";
 import { Button } from "@lemonsqueezy/wedges";
@@ -25,25 +25,21 @@ export function SubscribeBtn(props: {
 
   const label = isCurrent ? t("current") : t("new");
 
-  // Make sure Lemon.js is loaded, you need to enqueue the Lemon Squeezy SDK in your app first.
-  // useEffect(() => {
-  //   if (typeof window.createLemonSqueezy === "function") {
-  //     window.createLemonSqueezy();
-  //   }
-  // }, []);
-
-  // eslint-disable-next-line no-nested-ternary -- disabled
+  useEffect(() => {
+    if (typeof window.createLemonSqueezy === "function") {
+      window.createLemonSqueezy();
+    }
+  }, []);
 
   return (
     <Button
       before={
         loading ? (
           <Loader2 className="animate-spin text-muted-foreground" />
-        ) : null
+        ) : undefined
       }
       disabled={loading || isCurrent}
       onClick={async () => {
-        // Create a checkout and open the Lemon.js modal
         let checkoutUrl: string | undefined = "";
 
         try {

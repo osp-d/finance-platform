@@ -32,7 +32,6 @@ export async function syncPlans() {
   const productVariants: NewPlan[] = await db.select().from(plans);
 
   async function _addVariant(variant: NewPlan) {
-    // eslint-disable-next-line no-console -- allow
     console.log(`Syncing variant ${variant.name} with the database...`);
 
     await db
@@ -40,7 +39,6 @@ export async function syncPlans() {
       .values(variant)
       .onConflictDoUpdate({ target: plans.variantId, set: variant });
 
-    /* eslint-disable no-console -- allow */
     console.log(`${variant.name} synced with the database...`);
 
     productVariants.push(variant);
@@ -54,7 +52,6 @@ export async function syncPlans() {
   const allVariants = products.data?.included as Variant["data"][] | undefined;
 
   if (allVariants) {
-    /* eslint-disable no-await-in-loop -- allow */
     for (const v of allVariants) {
       const variant = v.attributes;
 
@@ -270,7 +267,9 @@ export async function storeWebhookEvent(
     throw new Error("POSTGRES_URL is not set");
   }
 
-  const id = crypto.randomInt(100000000, 1000000000);
+  const min = 100000000;
+  const max = 1000000000;
+  const id = Math.floor(Math.random() * (max - min)) + min;
 
   const returnedValue = await db
     .insert(webhookEvents)
@@ -409,7 +408,6 @@ export async function unpauseUserSubscription(id: string) {
   }
 
   const returnedSub = await updateSubscription(id, {
-    // @ts-expect-error -- null is a valid value for pause
     pause: null,
   });
 
