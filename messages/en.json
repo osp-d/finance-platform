@@ -42,6 +42,10 @@
       "label": "Categories"
     },
     "5": {
+      "href": "/dashboard/plans",
+      "label": "Plans"
+    },
+    "6": {
       "href": "/dashboard/settings",
       "label": "Settings"
     }
@@ -357,6 +361,11 @@
       "transactions": {
         "error": "Please select an account to continue",
         "history": "Transaction History"
+      },
+      "plans": {
+        "unavailable": "No plans are available",
+        "current": "Your plan",
+        "new": "Get started"
       }
     },
     "importCard": {
@@ -568,6 +577,16 @@
           "description": "Please select an account to continue",
           "confirm": "Confirm",
           "close": "Close"
+        }
+      }
+    },
+    "plans": {
+      "api": {
+        "getPlans": {
+          "fail": "Failed to fetch plans"
+        },
+        "getSubscriptions": {
+          "fail": "Failed to fetch subscriptions"
         }
       }
     }

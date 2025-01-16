@@ -81,3 +81,16 @@ export function formatPercentage(
 
   return result;
 }
+
+export function timingSafeEqual(digest: string, expectedSignature: string) {
+  if (digest.length !== expectedSignature.length) {
+    return false;
+  }
+
+  let result = 0;
+  for (let i = 0; i < digest.length; i++) {
+    result |= digest.charCodeAt(i) ^ expectedSignature.charCodeAt(i);
+  }
+
+  return result === 0;
+}

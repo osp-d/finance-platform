@@ -1,18 +1,33 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { handle } from "hono/vercel";
 import accounts from "@/src/app/api/[[...route]]/accounts";
 import categories from "@/src/app/api/[[...route]]/categories";
 import transactions from "@/src/app/api/[[...route]]/transactions";
 import summary from "@/src/app/api/[[...route]]/summary";
+import plans from "@/src/app/api/[[...route]]/plans";
 
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
+
+app.use(
+  "/api/*",
+  cors({
+    origin: (origin) => {
+      return origin.endsWith(".vercel.app")
+        ? origin
+        : "https://finance-platform-dun.vercel.app/";
+    },
+  }),
+);
+
 const routes = app
   .route("/accounts", accounts)
   .route("/categories", categories)
   .route("/transactions", transactions)
-  .route("/summary", summary);
+  .route("/summary", summary)
+  .route("/plans", plans);
 
 export const GET = handle(app);
 export const POST = handle(app);

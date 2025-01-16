@@ -15,10 +15,9 @@ export function NavBar() {
   const isMobile = useMedia("(max-width: 1024px", false);
   const pathname = usePathname();
   const t = useTranslations("navBar");
-  const routes = [1, 2, 3, 4, 5] as const;
+  const routes = [1, 2, 3, 4, 5, 6] as const;
 
   const onClick = (href: string) => {
-    console.log(href);
     router.push(href);
     setIsOpen(false);
   };
